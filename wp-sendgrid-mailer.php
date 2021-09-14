@@ -8,7 +8,7 @@ Author URI: https://github.com/devwael
 Version: 1.0
 */
 //WP_SENDGRID_MAILER_API_KEY
-include 'sendgrid-php/sendgrid-php.php';
+include plugin_dir_path( __FILE__ ) . 'sendgrid-php/sendgrid-php.php';
 
 /**
  * Sends an email, similar to PHP's mail function.
@@ -28,10 +28,10 @@ include 'sendgrid-php/sendgrid-php.php';
  * @return bool Whether the email was sent successfully.
  */
 
-if( defined( 'WP_SENDGRID_MAILER_API_KEY' ) ){
+if ( defined( 'WP_SENDGRID_MAILER_API_KEY' ) ) {
     function wp_mail( $to, $subject, $message, $headers = '', $attachments = array() ){
         $email = new \SendGrid\Mail\Mail();
-        $email->setFrom( "test@innoshop.co", "Innoshop Store" );
+        $email->setFrom( "notifications@innoshop.co", "Innoshop Store" );
         $email->setSubject( $subject );
         $email->addTo( $to );
         $email->addContent( "text/html", $message );
